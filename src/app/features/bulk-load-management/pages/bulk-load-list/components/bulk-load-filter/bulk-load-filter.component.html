@@ -1,0 +1,25 @@
+<rpbj-filter>
+  <form [formGroup]="formulario" autocomplete="off">
+    <div class="container-fluid px-0">
+      <div class="row gx-3 align-items-baseline mb-2">
+        <div class="col-12 col-md-3 col-lg-3">
+          <div class="form-group">
+            <label for="loteTipoCodigo" class="form-label"
+              >Tipo de gestión</label
+            >
+            <ng-select
+              [searchable]="true"
+              formControlName="formatCode"
+              id="formatCode"
+              [clearable]="true"
+              bindValue="formatCode"
+              bindLabel="Name"
+              notFoundText="No se encontraron datos"
+            >
+            </ng-select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</rpbj-filter>
