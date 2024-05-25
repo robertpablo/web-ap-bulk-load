@@ -23,35 +23,33 @@ import { SharedPipesModule } from '@ropabajo/shared/pipe';
 import { AppState } from './core/lib/store';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { RpbjPageWrapper } from '@ropabajo/shared/components';
+import { AppGlobalConfigState, ConfigService, CoreConfig, CoreModule } from '@ropabajo/core';
+
 
 @NgModule({
   imports: [
-    NgxsModule.forRoot([AppState], {
-      developmentMode: !environment.production,
-    }),
-    NgxsReduxDevtoolsPluginModule.forRoot({
-      disabled: environment.production,
-    }),
-    NgxsLoggerPluginModule.forRoot({
-      disabled: environment.production,
-    }),
     RouterModule.forRoot(ROUTES),
     BrowserModule,
     CommonModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    AppComponent,
+    //AppComponent,
     SharedPipesModule,
     NgSelectModule,
     NgbPaginationModule,
     RpbjPageWrapper,
+    CoreModule,
+    NgxsModule.forRoot([AppGlobalConfigState], {
+      developmentMode: !environment.production,
+    }),
   ],
   providers: [
     NgbActiveModal,
     { provide: LOCALE_ID, useValue: 'es-PE' },
     { provide: APP_BASE_HREF, useValue: '/container' },
     DecimalPipe,
+    ConfigService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports: [RouterModule],
