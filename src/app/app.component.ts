@@ -27,6 +27,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.configurationService.global(), 'globar');
+    console.log(this.configurationService.global(), 'global bulk-load');
   }
 }
