@@ -5,7 +5,12 @@ import {
   NgModule,
 } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { APP_BASE_HREF, CommonModule, DecimalPipe, registerLocaleData } from '@angular/common';
+import {
+  APP_BASE_HREF,
+  CommonModule,
+  DecimalPipe,
+  registerLocaleData,
+} from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
@@ -20,13 +25,11 @@ import { AppComponent } from './app.component';
 import { SharedPipesModule } from '@ropabajo/shared/pipe';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { RpbjPageWrapper } from '@ropabajo/shared/components';
-import {
-  AppGlobalConfigState,
-  ConfigService,
-  CoreModule,
-} from '@ropabajo/core';
+import { AppGlobalConfigState } from '@ropabajo/core';
 
 import localeEsPe from '@angular/common/locales/es-PE';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 
 registerLocaleData(localeEsPe, 'es-PE');
 
@@ -43,9 +46,15 @@ registerLocaleData(localeEsPe, 'es-PE');
     NgSelectModule,
     NgbPaginationModule,
     RpbjPageWrapper,
-    CoreModule,
+    //CoreModule,
     NgxsModule.forRoot([AppGlobalConfigState], {
       developmentMode: !environment.production,
+    }),
+    NgxsReduxDevtoolsPluginModule.forRoot({
+      disabled: environment.production,
+    }),
+    NgxsLoggerPluginModule.forRoot({
+      disabled: true, // environment.production
     }),
   ],
   providers: [
@@ -53,7 +62,7 @@ registerLocaleData(localeEsPe, 'es-PE');
     { provide: LOCALE_ID, useValue: 'es-PE' },
     { provide: APP_BASE_HREF, useValue: '/container' },
     DecimalPipe,
-    ConfigService,
+    //ConfigService,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports: [RouterModule],
