@@ -46,7 +46,6 @@ registerLocaleData(localeEsPe, 'es-PE');
     NgSelectModule,
     NgbPaginationModule,
     RpbjPageWrapper,
-    //CoreModule,
     NgxsModule.forRoot([AppGlobalConfigState], {
       developmentMode: !environment.production,
     }),
@@ -54,15 +53,14 @@ registerLocaleData(localeEsPe, 'es-PE');
       disabled: environment.production,
     }),
     NgxsLoggerPluginModule.forRoot({
-      disabled: true, // environment.production
+      disabled: true,
     }),
   ],
   providers: [
     NgbActiveModal,
     { provide: LOCALE_ID, useValue: 'es-PE' },
-    { provide: APP_BASE_HREF, useValue: '/container' },
+    { provide: APP_BASE_HREF, useValue: '/bulk-load' },
     DecimalPipe,
-    //ConfigService,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports: [RouterModule],

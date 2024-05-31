@@ -23,7 +23,7 @@
     "@ngxs/devtools-plugin": "^3.8.2",
     "@ngxs/logger-plugin": "^3.8.2",
     "@ngxs/store": "^3.8.2",
-    "@ropabajo/core": "^0.1.9",
+    "@ropabajo/core": "^0.2.1",
     "@ropabajo/shared": "^0.0.5",
     "bootstrap": "^5.3.3",
     "feather-icons": "^4.29.1",
