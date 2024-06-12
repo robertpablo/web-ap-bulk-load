@@ -26,7 +26,6 @@ import { SharedPipesModule } from '@ropabajo/shared/pipe';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { RpbjPageWrapper } from '@ropabajo/shared/components';
 import { AppGlobalConfigState } from '@ropabajo/core';
-
 import localeEsPe from '@angular/common/locales/es-PE';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
