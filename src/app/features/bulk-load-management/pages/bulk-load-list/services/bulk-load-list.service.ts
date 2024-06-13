@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { convertObjectToGetParams } from 'src/app/core';
+import { convertObjectToGetParams } from '@ropabajo/shared/functions/http.helpers';
 import { BulkLoadConfigurationService } from 'src/app/core/services/bulk-load-configuration.service';
 
 @Injectable()

@@ -22,9 +22,9 @@ import { environment } from '../environments/environment';
 import { RouterModule } from '@angular/router';
 import { ROUTES } from './routes';
 import { AppComponent } from './app.component';
-import { SharedPipesModule } from '@ropabajo/shared/pipe';
+//import { SharedPipesModule } from '@ropabajo/shared/pipe';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { RpbjPageWrapper } from '@ropabajo/shared/components';
+import { RpbjPageWrapperComponent } from '@ropabajo/shared/components';
 import { AppGlobalConfigState } from '@ropabajo/core';
 import localeEsPe from '@angular/common/locales/es-PE';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
@@ -41,10 +41,10 @@ registerLocaleData(localeEsPe, 'es-PE');
     FormsModule,
     ReactiveFormsModule,
     AppComponent,
-    SharedPipesModule,
+    //SharedPipesModule,
     NgSelectModule,
     NgbPaginationModule,
-    RpbjPageWrapper,
+    RpbjPageWrapperComponent,
     NgxsModule.forRoot([AppGlobalConfigState], {
       developmentMode: !environment.production,
     }),
@@ -70,3 +70,4 @@ export class AppModule {
     this.appRef.bootstrap(AppComponent); // Bootstrap the root component manually
   }
 }
+

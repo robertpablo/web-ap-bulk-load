@@ -9,7 +9,7 @@ import { NgbHighlight, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { BulkLoadFilterComponent } from '../components/bulk-load-filter/bulk-load-filter.component';
 import {
   PageHeaderComponent,
-  RpbjPageWrapper,
+  RpbjPageWrapperComponent,
 } from '@ropabajo/shared/components';
 
 @Component({
@@ -24,7 +24,7 @@ import {
     NgbHighlight,
     NgbdSortableHeader,
     NgbPaginationModule,
-    RpbjPageWrapper,
+    RpbjPageWrapperComponent,
     BulkLoadFilterComponent,
   ],
 })
