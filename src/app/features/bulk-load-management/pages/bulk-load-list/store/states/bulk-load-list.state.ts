@@ -38,6 +38,7 @@ export class BulkLoadListState {
         draft.grid.loading = true;
       })
     );
+
     return forkJoin([
       this.bulkLoadListService.getPagedBulkLoads({
         pageNumber: pageRequest.page,
@@ -45,12 +46,12 @@ export class BulkLoadListState {
       }),
       this.bulkLoadListService.getTotalBulkLoads(),
     ]).pipe(
-      map(([items, total]: any[]) => {
+      map(([items, contador]: any[]) => {
         setState(
           produce(getState(), (draft) => {
             draft.grid.loading = false;
-            draft.grid.source.items = items;
-            draft.grid.source.total = total;
+            draft.grid.source.items = items ?? [];
+            draft.grid.source.total = contador.total ?? 0;
 
             draft.grid.source.page = pageRequest.page;
             draft.grid.source.pageSize = pageRequest.pageSize;
