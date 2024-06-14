@@ -1,53 +1,47 @@
-import { Component, QueryList, ViewChildren } from '@angular/core';
-import { NgbdSortableHeader, SortEvent } from '../services/sortable.directive';
-import { CountryService } from '../services/country.service';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Country } from '../services/country';
-import { AsyncPipe, DecimalPipe } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { NgbHighlight, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { BulkLoadFilterComponent } from '../components/bulk-load-filter/bulk-load-filter.component';
 import {
   PageHeaderComponent,
   RpbjPageWrapperComponent,
 } from '@ropabajo/shared/components';
+import { BulkLoadButtonComponent } from '../components/bulk-load-button/bulk-load-button.component';
+import { BulkLoadTableComponent } from '../components';
+import {
+  BULK_LOAD_CONTAINER_STATE_TOKEN,
+  BulkLoadListStoreActions,
+  IBulkLoadList,
+} from '../store';
+import { Select, Store } from '@ngxs/store';
+import { CommonModule } from '@angular/common';
+import { BulkLoadListStateModule } from '../store/states/bulk-load-list.state.module';
 
 @Component({
   standalone: true,
   selector: 'rpbj-bulk-load-list',
   templateUrl: './bulk-load-list.component.html',
   imports: [
+    CommonModule,
+    BulkLoadListStateModule,
     PageHeaderComponent,
-    DecimalPipe,
-    FormsModule,
-    AsyncPipe,
-    NgbHighlight,
-    NgbdSortableHeader,
-    NgbPaginationModule,
+    BulkLoadButtonComponent,
     RpbjPageWrapperComponent,
     BulkLoadFilterComponent,
+    BulkLoadTableComponent,
   ],
 })
-export class BulkLoadListComponent {
-  countries$: Observable<Country[]>;
-  total$: Observable<number>;
+export class BulkLoadListComponent implements OnInit {
+  @Select(BULK_LOAD_CONTAINER_STATE_TOKEN) state$!: Observable<IBulkLoadList>;
 
-  @ViewChildren(NgbdSortableHeader) headers!: QueryList<NgbdSortableHeader>;
+  constructor(private store: Store) {}
 
-  constructor(public service: CountryService) {
-    this.countries$ = service.countries$;
-    this.total$ = service.total$;
+  ngOnInit() {
+    this.loadGrid();
   }
 
-  onSort({ column, direction }: SortEvent) {
-    // resetting other headers
-    this.headers.forEach((header: any) => {
-      if (header.sortable !== column) {
-        header.direction = '';
-      }
-    });
-
-    this.service.sortColumn = column;
-    this.service.sortDirection = direction;
-  }
+  loadGrid = (e = {}) => {
+    this.store.dispatch(
+      new BulkLoadListStoreActions.BulkLoadList.PaginatedGrid(e)
+    );
+  };
 }
