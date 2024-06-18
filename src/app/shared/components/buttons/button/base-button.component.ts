@@ -23,7 +23,7 @@ export class AppBaseButtonComponent implements OnInit {
   @Input() icon?: string = 'refresh-ccw';
   @Input() color?: string = 'cancel';
   @Input() tooltip?: string = '';
-  @Input() tooltipPosition: string = this.tooltipPositionEnum.RIGHT;
+  @Input() tooltipPosition: string = this.tooltipPositionEnum.TOP;
   @Input() disabled: boolean = false;
   @Output('on-click') onClickEvent: EventEmitter<any> = new EventEmitter();
   @Input() size: ISize = 'medium';
