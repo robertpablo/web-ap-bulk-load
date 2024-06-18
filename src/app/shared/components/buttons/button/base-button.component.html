@@ -1,0 +1,28 @@
+<button
+  [title]="propTitle || ''"
+  [class]="styleClass"
+  *ngIf="variant == variants.NORMAL"
+  [type]="buttonType"
+  color="color"
+  [disabled]="disabled"
+  (click)="handleClick($event)"
+  [ngbTooltip]="tooltip"
+  [placement]="tooltipPosition"
+>
+  <span *ngIf="icon" [class]="['feather', 'icon-' + icon]"></span>
+  {{ label }}
+</button>
+
+<button
+  [title]="propTitle || ''"
+  [class]="styleClass"
+  *ngIf="variant == variants.ICON"
+  [type]="buttonType"
+  color="color"
+  [disabled]="disabled"
+  (click)="handleClick($event)"
+  [ngbTooltip]="tooltip"
+  [placement]="tooltipPosition"
+>
+  <span *ngIf="icon" [class]="['feather', 'icon-' + icon]"></span>
+</button>
