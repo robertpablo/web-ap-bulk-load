@@ -1,0 +1,51 @@
+<div class="container-fluid g-0">
+  <div class="row justify-content-between align-items-center">
+    <div class="col-12 col-sm">
+      <h4 class="fw-bold mb-0 text-uppercase">{{ title }}</h4>
+      <div>
+        <span class="title-name-page text-uppercase">{{ caption }}</span>
+      </div>
+    </div>
+    <div class="col-12 col-sm-auto rigth-slot">
+      <ng-content></ng-content>
+    </div>
+    <div class="row gx-2 justify-content-end">
+      <div class="col-auto">
+        <!-- <button
+          type="button"
+          class="btn btn-cancel btn-secondary me-2"
+          (click)="handlerCancel()"
+        >
+          <span class="feather icon-x"></span>
+          {{ cancelLabel }}
+        </button> -->
+
+        <app-base-button
+          (on-click)="handlerCancel()"
+          icon="x"
+          [label]="cancelLabel"
+        >
+        </app-base-button>
+
+        <!-- <button
+          *ngIf="successShow"
+          type="button"
+          class="btn btn-primary"
+          (click)="handlerSuccess()"
+        >
+          <span class="feather icon-save"></span>
+          {{ successLabel }}
+        </button> -->
+
+        <app-base-button
+          *ngIf="successShow"
+          (on-click)="handlerSuccess()"
+          icon="save"
+          color="primary"
+          [label]="successLabel"
+        >
+        </app-base-button>
+      </div>
+    </div>
+  </div>
+</div>
