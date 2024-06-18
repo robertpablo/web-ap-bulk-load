@@ -1,3 +1,10 @@
-<rpbj-base-button></rpbj-base-button>
-
-<rpbj-button-new></rpbj-button-new>
+<!-- <app-base-button tooltip="Agregar" [tooltipPosition]="'left'"></app-base-button> -->
+<div class="button-container my-3">
+  <app-button-new
+    [variant]="'icon'"
+    tooltip="Agregar"
+    [tooltipPosition]="'top'"
+    (on-click)="handlerNuevo()"
+  >
+  </app-button-new>
+</div>

@@ -1,0 +1,10 @@
+.button-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  /* Espacio hacia abajo */
+  margin-top: 1rem;
+  /* Espacio hacia arriba */
+  gap: 0.5rem;
+  /* Espacio entre botones */
+}

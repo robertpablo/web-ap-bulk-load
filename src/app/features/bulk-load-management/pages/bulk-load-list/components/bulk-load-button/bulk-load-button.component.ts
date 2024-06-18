@@ -1,13 +1,21 @@
 import { Component } from '@angular/core';
-import {
-  RpbjBaseButtonComponent,
-  RpbjButtonNewComponent,
-} from '@ropabajo/shared/components';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { AppButtonNewComponent } from 'src/app/shared/components/buttons';
 
 @Component({
   selector: 'rpbj-bulk-load-button',
   templateUrl: './bulk-load-button.component.html',
+  styleUrls: ['./bulk-load-button.component.scss'],
   standalone: true,
-  imports: [RpbjBaseButtonComponent, RpbjButtonNewComponent],
+  imports: [AppButtonNewComponent, NgbTooltipModule],
 })
-export class BulkLoadButtonComponent {}
+export class BulkLoadButtonComponent {
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
+
+  handlerNuevo = () => {
+    this.router.navigate(['../add'], {
+      relativeTo: this.activatedRoute,
+    });
+  };
+}

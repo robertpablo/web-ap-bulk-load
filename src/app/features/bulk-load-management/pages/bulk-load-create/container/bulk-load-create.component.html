@@ -1,1 +1,25 @@
-<p>bulk-load-create works!</p>
+<div class="frame-layout">
+  <div class="frame-layout__header">
+    <div class="container-fluid px-0 g-0">
+      <!--Camino de Migas-->
+      <div class="row containerIn-divisor">
+        <div class="col-12 mb-1">
+          <nav aria-label="breadcrumb"></nav>
+        </div>
+      </div>
+
+      <!--Titulo del Contenedor Interno-->
+      <div class="row">
+        <div class="col-12 my-2">
+          <app-top-bar
+            [title]="title"
+            caption="{{ caption }}"
+            (on-cancel)="handlerCancelar()"
+          >
+            <div class="d-flex align-items-center"></div>
+          </app-top-bar>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
