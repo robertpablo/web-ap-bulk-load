@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RpbjDataGridComponent } from '@ropabajo/shared/components';
-import { BULK_LOAD_CONTAINER_STATE_TOKEN } from '../../store';
+import { BULK_LOAD_LIST_CONTAINER_STATE_TOKEN } from '../../store';
 import { IDataGridButtonEvent } from '@ropabajo/shared/interfaces';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngxs/store';
@@ -12,7 +12,7 @@ import { Store } from '@ngxs/store';
   imports: [RpbjDataGridComponent, CommonModule],
 })
 export class BulkLoadTableComponent implements OnInit {
-  readonly state$ = this.store.select(BULK_LOAD_CONTAINER_STATE_TOKEN);
+  readonly state$ = this.store.select(BULK_LOAD_LIST_CONTAINER_STATE_TOKEN);
 
   constructor(private store: Store) {}
 

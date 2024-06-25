@@ -1,0 +1,60 @@
+<div class="row gx-3 align-items-baseline mb-2">
+  <div class="col-md-12">
+    <ngx-file-drop
+      [class.hidden]="fileItem"
+      (onFileDrop)="dropped($event)"
+      (onFileOver)="fileOver($event)"
+      (onFileLeave)="fileLeave($event)"
+    >
+      <ng-template
+        ngx-file-drop-content-tmp
+        let-openFileSelector="openFileSelector"
+      >
+        <div class="dropzone">
+          <p>Arrastra y suelta tus archivos aquí</p>
+          <p>o haz clic para seleccionar archivos</p>
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="openFileSelector()"
+          >
+            Buscar archivo
+          </button>
+        </div>
+      </ng-template>
+    </ngx-file-drop>
+  </div>
+
+  <div class="col-md-12" *ngIf="fileItem">
+    <div
+      class="file-info d-flex align-items-center justify-content-between p-2 border rounded"
+    >
+      <div class="file-name">
+        <strong>{{ fileItem.name }}</strong>
+      </div>
+      <div class="file-size">
+        {{ fileItem.size | bytesFormat }}
+      </div>
+      <div class="file-actions">
+        <button
+          type="button"
+          class="btn btn-outline-primary btn-sm"
+          (click)="onDelete()"
+          [disabled]="disabled"
+          *ngIf="!esConsulta"
+        >
+          <span class="feather icon-trash"></span>
+        </button>
+        <button
+          type="button"
+          class="btn btn-outline-primary btn-sm"
+          (click)="onDownloadFile()"
+          [disabled]="disabled"
+          *ngIf="permiteDescargar"
+        >
+          <span class="feather icon-download"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

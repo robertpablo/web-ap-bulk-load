@@ -1,8 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { VARIANTS } from '@ropabajo/shared/enum';
+import { VARIANTS, PLACEMENT } from '@ropabajo/shared/enum';
 import { AppBaseButtonComponent } from '../button/base-button.component';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
-import { PLACEMENT } from 'src/app/shared/enums';
 
 @Component({
   selector: 'app-button-new',

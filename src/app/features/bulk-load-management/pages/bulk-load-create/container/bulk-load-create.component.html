@@ -1,25 +1,72 @@
-<div class="frame-layout">
-  <div class="frame-layout__header">
-    <div class="container-fluid px-0 g-0">
-      <!--Camino de Migas-->
-      <div class="row containerIn-divisor">
-        <div class="col-12 mb-1">
-          <nav aria-label="breadcrumb"></nav>
+<ng-container *ngIf="state$ | async as state">
+  <div class="frame-layout">
+    <div class="frame-layout__header">
+      <div class="container-fluid px-0 g-0">
+        <div class="row containerIn-divisor">
+          <div class="col-12 mb-1">
+            <nav aria-label="breadcrumb"></nav>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12 my-2">
+            <app-top-bar
+              title="{{ state.title }}"
+              caption="{{ caption }}"
+              (on-cancel)="handlerCancelar()"
+            >
+              <div class="d-flex align-items-center"></div>
+            </app-top-bar>
+          </div>
         </div>
       </div>
 
-      <!--Titulo del Contenedor Interno-->
-      <div class="row">
-        <div class="col-12 my-2">
-          <app-top-bar
-            [title]="title"
-            caption="{{ caption }}"
-            (on-cancel)="handlerCancelar()"
-          >
-            <div class="d-flex align-items-center"></div>
-          </app-top-bar>
+      <div class="container-fluid px-0">
+        <div class="rpbj-card padding">
+          <form autocomplete="off">
+            <div class="container-fluid px-0">
+              <div class="col-12">
+                <h5 class="mb-0">
+                  <span class="title-group-uppercase">DATOS DE LA CARGA</span>
+                </h5>
+              </div>
+              <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <app-uploader
+                  [allowedMimeType]="allowedMimeType"
+                  [maxFileSize]="maxFileSize"
+                  [disabled]="false"
+                  [esConsulta]="false"
+                  (on-change)="handleFileChange($event)"
+                ></app-uploader>
+              </div>
+
+              <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <input
+                  id="dropzone-file"
+                  type="file"
+                  class="hidden"
+                  [accept]="[]"
+                />
+              </div>
+
+              <div>
+                <ng-select
+                  [searchable]="true"
+                  formControlName="formatCode"
+                  id="formatCode"
+                  [clearable]="true"
+                  bindValue="formatCode"
+                  bindLabel="name"
+                  notFoundText="No se encontraron datos"
+                  [items]="state.combos.formats.list"
+                  [loading]="state.combos.formats.loading"
+                >
+                </ng-select>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
   </div>
-</div>
+</ng-container>

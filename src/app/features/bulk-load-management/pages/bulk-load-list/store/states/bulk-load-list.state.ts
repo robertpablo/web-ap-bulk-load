@@ -8,12 +8,12 @@ import { catchError, forkJoin, map, throwError } from 'rxjs';
 import { BulkLoadListService } from '../../services/bulk-load-list.service';
 import { IDataGridSource } from '@ropabajo/shared/interfaces';
 
-export const BULK_LOAD_CONTAINER_STATE_TOKEN = new StateToken<IBulkLoadList>(
+export const BULK_LOAD_LIST_CONTAINER_STATE_TOKEN = new StateToken<IBulkLoadList>(
   'bulkLoadListState'
 );
 
 @State({
-  name: BULK_LOAD_CONTAINER_STATE_TOKEN,
+  name: BULK_LOAD_LIST_CONTAINER_STATE_TOKEN,
   defaults: initialBulkLoadContainerState.bulkLoadList,
 })
 @Injectable()
@@ -71,38 +71,6 @@ export class BulkLoadListState {
         return throwError(err);
       })
     );
-
-    // return this.bulkLoadListService
-    //   .getPagedBulkLoads({
-    //     pageNumber: pageRequest.page,
-    //     pageSize: pageRequest.pageSize,
-    //   })
-    //   .pipe(
-    //     map((resp: any) => {
-    //       setState(
-    //         produce(getState(), (draft) => {
-    //           draft.grid.loading = false;
-    //           draft.grid.source.items = resp;
-    //           draft.grid.source.total = resp.length;
-
-    //           draft.grid.source.page = pageRequest.page;
-    //           draft.grid.source.pageSize = pageRequest.pageSize;
-    //           draft.grid.source.orderBy = pageRequest.orderBy;
-    //           draft.grid.source.orderDir = pageRequest.orderDir;
-    //           draft.grid.source.skip = pageRequest.skip;
-    //         })
-    //       );
-    //     }),
-    //     catchError((err) => {
-    //       setState(
-    //         produce(getState(), (draft) => {
-    //           draft.grid.loading = false;
-    //           //draft. = err;
-    //         })
-    //       );
-    //       return throwError(err);
-    //     })
-    //   );
   }
 }
 

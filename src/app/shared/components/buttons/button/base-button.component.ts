@@ -1,8 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
-import { VARIANTS, ISize } from '@ropabajo/shared/enum';
-import { PLACEMENT } from 'src/app/shared/enums';
+import { VARIANTS, ISize, PLACEMENT } from '@ropabajo/shared/enum';
 
 @Component({
   selector: 'app-base-button',
